@@ -7,29 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24BE9F23ECB66853BF6B887A /* Pods_EventSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24051AFCEB6837588F12D23 /* Pods_EventSource.framework */; };
 		41DFE42A1A8E686F000C3519 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFE4291A8E686F000C3519 /* AppDelegate.swift */; };
 		41DFE42C1A8E686F000C3519 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFE42B1A8E686F000C3519 /* ViewController.swift */; };
 		41DFE42F1A8E686F000C3519 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41DFE42D1A8E686F000C3519 /* Main.storyboard */; };
 		41DFE4311A8E686F000C3519 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41DFE4301A8E686F000C3519 /* Images.xcassets */; };
 		41DFE4341A8E686F000C3519 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41DFE4321A8E686F000C3519 /* LaunchScreen.xib */; };
-		41DFE4401A8E6870000C3519 /* SplittedEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFE43F1A8E6870000C3519 /* SplittedEvents.swift */; };
 		41DFE44B1A8E6D6F000C3519 /* EventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFE44A1A8E6D6F000C3519 /* EventSource.swift */; };
-		C11719F61D19C16800807B3B /* TestableEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11719F51D19C16800807B3B /* TestableEventSource.swift */; };
-		C11719F81D19CF3F00807B3B /* MockNSURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11719F71D19CF3F00807B3B /* MockNSURLSessionDataTask.swift */; };
-		C1F518E21C99D96200713047 /* EventSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F518E11C99D96200713047 /* EventSourceTests.swift */; };
-		C1F518FA1C99E3A300713047 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F518F91C99E3A300713047 /* ConfigurationTests.swift */; };
-		E0E27C231A9BB5A2008B9900 /* EventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DFE44A1A8E6D6F000C3519 /* EventSource.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		41DFE43A1A8E6870000C3519 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 41DFE41C1A8E686F000C3519 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 41DFE4231A8E686F000C3519;
-			remoteInfo = EventSource;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		41DFE4241A8E686F000C3519 /* EventSource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventSource.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,14 +24,11 @@
 		41DFE42E1A8E686F000C3519 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		41DFE4301A8E686F000C3519 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		41DFE4331A8E686F000C3519 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		41DFE4391A8E6870000C3519 /* EventSourceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventSourceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41DFE43E1A8E6870000C3519 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		41DFE43F1A8E6870000C3519 /* SplittedEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplittedEvents.swift; sourceTree = "<group>"; };
 		41DFE44A1A8E6D6F000C3519 /* EventSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSource.swift; sourceTree = "<group>"; };
-		C11719F51D19C16800807B3B /* TestableEventSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestableEventSource.swift; sourceTree = "<group>"; };
-		C11719F71D19CF3F00807B3B /* MockNSURLSessionDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNSURLSessionDataTask.swift; sourceTree = "<group>"; };
-		C1F518E11C99D96200713047 /* EventSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSourceTests.swift; sourceTree = "<group>"; };
-		C1F518F91C99E3A300713047 /* ConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
+		678993722B57980EA2D11109 /* Pods-EventSource.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventSource.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EventSource/Pods-EventSource.debug.xcconfig"; sourceTree = "<group>"; };
+		8D80CE7B2F7C30AA693BFA98 /* Pods-EventSource.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventSource.release.xcconfig"; path = "Pods/Target Support Files/Pods-EventSource/Pods-EventSource.release.xcconfig"; sourceTree = "<group>"; };
+		C24051AFCEB6837588F12D23 /* Pods_EventSource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventSource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,19 +36,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		41DFE4361A8E6870000C3519 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				24BE9F23ECB66853BF6B887A /* Pods_EventSource.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		088D5E9D49E12A9E4D2DDDFD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				678993722B57980EA2D11109 /* Pods-EventSource.debug.xcconfig */,
+				8D80CE7B2F7C30AA693BFA98 /* Pods-EventSource.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1B4CFD435D32BAA8808DD12F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C24051AFCEB6837588F12D23 /* Pods_EventSource.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		41DFE41B1A8E686F000C3519 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +67,8 @@
 				41DFE4261A8E686F000C3519 /* EventSourceExample */,
 				41DFE43C1A8E6870000C3519 /* EventSourceTests */,
 				41DFE4251A8E686F000C3519 /* Products */,
+				088D5E9D49E12A9E4D2DDDFD /* Pods */,
+				1B4CFD435D32BAA8808DD12F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,7 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				41DFE4241A8E686F000C3519 /* EventSource.app */,
-				41DFE4391A8E6870000C3519 /* EventSourceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,11 +104,6 @@
 		41DFE43C1A8E6870000C3519 /* EventSourceTests */ = {
 			isa = PBXGroup;
 			children = (
-				C11719F51D19C16800807B3B /* TestableEventSource.swift */,
-				C11719F71D19CF3F00807B3B /* MockNSURLSessionDataTask.swift */,
-				41DFE43F1A8E6870000C3519 /* SplittedEvents.swift */,
-				C1F518E11C99D96200713047 /* EventSourceTests.swift */,
-				C1F518F91C99E3A300713047 /* ConfigurationTests.swift */,
 				41DFE43D1A8E6870000C3519 /* Supporting Files */,
 			);
 			path = EventSourceTests;
@@ -143,9 +132,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 41DFE4431A8E6870000C3519 /* Build configuration list for PBXNativeTarget "EventSource" */;
 			buildPhases = (
+				D15CCD8F56DA208A99E533F8 /* [CP] Check Pods Manifest.lock */,
 				41DFE4201A8E686F000C3519 /* Sources */,
 				41DFE4211A8E686F000C3519 /* Frameworks */,
 				41DFE4221A8E686F000C3519 /* Resources */,
+				D037975EEB2EC74827D21D6A /* [CP] Embed Pods Frameworks */,
+				E10FAC8790D46DFBC387BD68 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -155,24 +147,6 @@
 			productName = EventSource;
 			productReference = 41DFE4241A8E686F000C3519 /* EventSource.app */;
 			productType = "com.apple.product-type.application";
-		};
-		41DFE4381A8E6870000C3519 /* EventSourceTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 41DFE4461A8E6870000C3519 /* Build configuration list for PBXNativeTarget "EventSourceTests" */;
-			buildPhases = (
-				41DFE4351A8E6870000C3519 /* Sources */,
-				41DFE4361A8E6870000C3519 /* Frameworks */,
-				41DFE4371A8E6870000C3519 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				41DFE43B1A8E6870000C3519 /* PBXTargetDependency */,
-			);
-			name = EventSourceTests;
-			productName = EventSourceTests;
-			productReference = 41DFE4391A8E6870000C3519 /* EventSourceTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -188,11 +162,6 @@
 					41DFE4231A8E686F000C3519 = {
 						CreatedOnToolsVersion = 6.0.1;
 						LastSwiftMigration = 0800;
-					};
-					41DFE4381A8E6870000C3519 = {
-						CreatedOnToolsVersion = 6.0.1;
-						LastSwiftMigration = 0800;
-						TestTargetID = 41DFE4231A8E686F000C3519;
 					};
 				};
 			};
@@ -210,7 +179,6 @@
 			projectRoot = "";
 			targets = (
 				41DFE4231A8E686F000C3519 /* EventSource */,
-				41DFE4381A8E6870000C3519 /* EventSourceTests */,
 			);
 		};
 /* End PBXProject section */
@@ -226,14 +194,55 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		41DFE4371A8E6870000C3519 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D037975EEB2EC74827D21D6A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EventSource/Pods-EventSource-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-/* End PBXResourcesBuildPhase section */
+		D15CCD8F56DA208A99E533F8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E10FAC8790D46DFBC387BD68 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EventSource/Pods-EventSource-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		41DFE4201A8E686F000C3519 /* Sources */ = {
@@ -246,28 +255,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		41DFE4351A8E6870000C3519 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C1F518E21C99D96200713047 /* EventSourceTests.swift in Sources */,
-				41DFE4401A8E6870000C3519 /* SplittedEvents.swift in Sources */,
-				C11719F81D19CF3F00807B3B /* MockNSURLSessionDataTask.swift in Sources */,
-				C1F518FA1C99E3A300713047 /* ConfigurationTests.swift in Sources */,
-				E0E27C231A9BB5A2008B9900 /* EventSource.swift in Sources */,
-				C11719F61D19C16800807B3B /* TestableEventSource.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		41DFE43B1A8E6870000C3519 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 41DFE4231A8E686F000C3519 /* EventSource */;
-			targetProxy = 41DFE43A1A8E6870000C3519 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		41DFE42D1A8E686F000C3519 /* Main.storyboard */ = {
@@ -378,6 +366,7 @@
 		};
 		41DFE4441A8E6870000C3519 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 678993722B57980EA2D11109 /* Pods-EventSource.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(SRCROOT)/EventSourceExample/Info.plist";
@@ -390,6 +379,7 @@
 		};
 		41DFE4451A8E6870000C3519 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D80CE7B2F7C30AA693BFA98 /* Pods-EventSource.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(SRCROOT)/EventSourceExample/Info.plist";
@@ -397,41 +387,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.inaka.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		41DFE4471A8E6870000C3519 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = EventSourceTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.inaka.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EventSource.app/EventSource";
-			};
-			name = Debug;
-		};
-		41DFE4481A8E6870000C3519 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = EventSourceTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.inaka.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EventSource.app/EventSource";
 			};
 			name = Release;
 		};
@@ -452,15 +407,6 @@
 			buildConfigurations = (
 				41DFE4441A8E6870000C3519 /* Debug */,
 				41DFE4451A8E6870000C3519 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		41DFE4461A8E6870000C3519 /* Build configuration list for PBXNativeTarget "EventSourceTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				41DFE4471A8E6870000C3519 /* Debug */,
-				41DFE4481A8E6870000C3519 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

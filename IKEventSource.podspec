@@ -13,4 +13,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.10'
   s.source       = { :git => "https://github.com/inaka/EventSource.git" }
   s.source_files  = "EventSource", "EventSource/**/*.{h,m}"
+
+  s.dependency 'Alamofire', '~> 4.2'
+
 end
