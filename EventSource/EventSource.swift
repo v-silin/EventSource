@@ -33,7 +33,7 @@ open class EventSource: NSObject {
     internal let receivedDataBuffer: NSMutableData
     fileprivate let uniqueIdentifier: String
     fileprivate let validNewlineCharacters = ["\r\n", "\n", "\r"]
-    fileprivate var currentRequest: DataRequest?
+    fileprivate var currentRequest: (SessionManager, DataRequest)?
     
     var event = Dictionary<String, String>()
     
@@ -87,7 +87,8 @@ open class EventSource: NSObject {
                                                       method: .get,
                                                       parameters: nil,
                                                       headers: additionalHeaders)
-        self.currentRequest = request
+        
+        self.currentRequest = (currentAlamofireManager, request)
         
         weak var weakSelf = self
         
@@ -105,8 +106,10 @@ open class EventSource: NSObject {
             weakSelf?.eventSource(didReceive: newData)
         }
         
-        request.response { (response: DefaultDataResponse) in
-            weakSelf?.eventSourceRequestFinished(error: response.error, httpResponse: response.response)
+        request.responseString { (response: DataResponse<String>) in
+            weakSelf?.currentRequest = nil
+            
+            weakSelf?.eventSourceRequestFinished(error: response.result.error, httpResponse: response.response)
         }
     }
     
@@ -115,7 +118,7 @@ open class EventSource: NSObject {
     open func close() {
         self.readyState = EventSourceState.closed
         
-        guard let currentRequest = self.currentRequest,
+        guard let currentRequest = self.currentRequest?.1,
             currentRequest.task?.state == .running
                 || currentRequest.task?.state == .suspended else {
                     return
