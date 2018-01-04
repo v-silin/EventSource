@@ -34,12 +34,13 @@ open class EventSource: NSObject {
     fileprivate let uniqueIdentifier: String
     fileprivate let validNewlineCharacters = ["\r\n", "\n", "\r"]
     fileprivate var currentRequest: (SessionManager, DataRequest)?
+    fileprivate let timeoutInterval: TimeInterval
     
     var event = Dictionary<String, String>()
     
     
-    public init(url: String, headers: [String : String] = [:]) {
-        
+    public init(url: String, headers: [String : String] = [:], timeoutInterval: TimeInterval = 60.0) {
+        self.timeoutInterval = timeoutInterval
         self.url = URL(string: url)!
         self.headers = headers
         self.readyState = EventSourceState.closed
@@ -74,8 +75,8 @@ open class EventSource: NSObject {
         additionalHeaders["Cache-Control"] = "no-cache"
         
         let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = TimeInterval(INT_MAX)
-        configuration.timeoutIntervalForResource = TimeInterval(INT_MAX)
+        configuration.timeoutIntervalForRequest = self.timeoutInterval
+        configuration.timeoutIntervalForResource = self.timeoutInterval
         configuration.httpAdditionalHeaders = additionalHeaders
         
         let currentAlamofireManager = SessionManager(configuration: configuration)
