@@ -76,7 +76,7 @@ open class EventSource: NSObject {
         
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = self.timeoutInterval
-        configuration.timeoutIntervalForResource = self.timeoutInterval
+        configuration.timeoutIntervalForResource = Double.greatestFiniteMagnitude
         configuration.httpAdditionalHeaders = additionalHeaders
         
         let currentAlamofireManager = SessionManager(configuration: configuration)
