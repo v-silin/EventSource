@@ -17,16 +17,17 @@ public enum EventSourceState {
 
 open class EventSource: NSObject {
     static let DefaultsKey = "com.inaka.eventSource.lastEventId"
+    private static let DEFAULT_URL_SCHEME: String = "https"
     
     let url: URL
     fileprivate let lastEventIDKey: String
     fileprivate let receivedString: NSString?
-    fileprivate var onOpenCallback: ((Void) -> Void)?
-    fileprivate var onErrorCallback: ((NSError) -> Void)?
-    fileprivate var onMessageCallback: ((_ id: String?, _ event: String?, _ data: String?) -> Void)?
+    fileprivate var onOpenCallback: (() -> ())?
+    fileprivate var onErrorCallback: ((NSError) -> ())?
+    fileprivate var onMessageCallback: ((_ id: String?, _ event: String?, _ data: String?) -> ())?
     open internal(set) var readyState: EventSourceState
     open fileprivate(set) var retryTime = 3000
-    fileprivate var eventListeners = Dictionary<String, (_ id: String?, _ event: String?, _ data: String?) -> Void>()
+    fileprivate var eventListeners = Dictionary<String, (_ id: String?, _ event: String?, _ data: String?) -> ()>()
     fileprivate var headers: Dictionary<String, String>
     fileprivate var operationQueue: OperationQueue
     fileprivate var errorBeforeSetErrorCallBack: NSError?
@@ -56,7 +57,7 @@ open class EventSource: NSObject {
         let relativePath = self.url.relativePath
         let host = self.url.host ?? ""
         
-        self.uniqueIdentifier = "\(self.url.scheme).\(host).\(port).\(relativePath)"
+        self.uniqueIdentifier = "\(self.url.scheme ?? EventSource.DEFAULT_URL_SCHEME).\(host).\(port).\(relativePath)"
         self.lastEventIDKey = "\(EventSource.DefaultsKey).\(self.uniqueIdentifier)"
         
         super.init()
@@ -142,11 +143,11 @@ open class EventSource: NSObject {
     
     //Mark: EventListeners
     
-    open func onOpen(_ onOpenCallback: @escaping ((Void) -> Void)) {
+    open func onOpen(_ onOpenCallback: @escaping (() -> ())) {
         self.onOpenCallback = onOpenCallback
     }
     
-    open func onError(_ onErrorCallback: @escaping ((NSError) -> Void)) {
+    open func onError(_ onErrorCallback: @escaping ((NSError) -> ())) {
         self.onErrorCallback = onErrorCallback
         
         if let errorBeforeSet = self.errorBeforeSetErrorCallBack {
@@ -155,15 +156,15 @@ open class EventSource: NSObject {
         }
     }
     
-    open func onMessage(_ onMessageCallback: @escaping ((_ id: String?, _ event: String?, _ data: String?) -> Void)) {
+    open func onMessage(_ onMessageCallback: @escaping ((_ id: String?, _ event: String?, _ data: String?) -> ())) {
         self.onMessageCallback = onMessageCallback
     }
     
-    open func addEventListener(_ event: String, handler: @escaping ((_ id: String?, _ event: String?, _ data: String?) -> Void)) {
+    open func addEventListener(_ event: String, handler: @escaping ((_ id: String?, _ event: String?, _ data: String?) -> ())) {
         self.eventListeners[event] = handler
     }
     
-    open func removeEventListener(_ event: String) -> Void {
+    open func removeEventListener(_ event: String) {
         self.eventListeners.removeValue(forKey: event)
     }
     
@@ -181,10 +182,13 @@ open class EventSource: NSObject {
         while let foundRange = searchForEventInRange(searchRange) {
             // Append event
             if foundRange.location > searchRange.location {
-                let dataChunk = receivedDataBuffer.subdata(
-                    with: NSRange(location: searchRange.location, length: foundRange.location - searchRange.location)
-                )
-                events.append(NSString(data: dataChunk, encoding: String.Encoding.utf8.rawValue) as! String)
+                let dataChunk = receivedDataBuffer.subdata(with: NSRange(location: searchRange.location,
+                                                                         length: foundRange.location - searchRange.location))
+                
+                if let newString = String(data: dataChunk,
+                                          encoding: .utf8) {
+                    events.append(newString)
+                }
             }
             // Search for next occurrence of delimiter
             searchRange.location = foundRange.location + foundRange.length
@@ -273,20 +277,24 @@ open class EventSource: NSObject {
     }
     
     fileprivate func parseEvent(_ eventString: String) -> (id: String?, event: String?, data: String?) {
-        var event = Dictionary<String, String>()
+        var event = [String : String]()
         
-        for line in eventString.components(separatedBy: CharacterSet.newlines) as [String] {
+        for line in eventString.components(separatedBy: CharacterSet.newlines) {
             autoreleasepool {
                 let (key, value) = self.parseKeyValuePair(line)
                 
-                if key != nil && value != nil {
-                    if event[key as! String] != nil {
-                        event[key as! String] = "\(event[key as! String]!)\n\(value!)"
+                guard let unwrapedKey = key else {
+                    return
+                }
+                
+                if let unwrapedValue = value {
+                    if let existingValue = event[unwrapedKey] {
+                        event[unwrapedKey] = "\(existingValue)\n\(unwrapedValue)"
                     } else {
-                        event[key as! String] = value! as String
+                        event[unwrapedKey] = unwrapedValue
                     }
-                } else if key != nil && value == nil {
-                    event[key as! String] = ""
+                } else {
+                    event[unwrapedKey] = ""
                 }
             }
         }
@@ -294,19 +302,23 @@ open class EventSource: NSObject {
         return (event["id"], event["event"], event["data"])
     }
     
-    fileprivate func parseKeyValuePair(_ line: String) -> (NSString?, NSString?) {
-        var key: NSString?, value: NSString?
+    fileprivate func parseKeyValuePair(_ line: String) -> (String?, String?) {
+        var key: NSString?
+        var value: NSString?
         let scanner = Scanner(string: line)
         scanner.scanUpTo(":", into: &key)
         scanner.scanString(":", into: nil)
         
         for newline in validNewlineCharacters {
-            if scanner.scanUpTo(newline, into: &value) {
-                break
+            guard scanner.scanUpTo(newline,
+                                   into: &value) else {
+                                    continue
             }
+            
+            break
         }
         
-        return (key, value)
+        return (key as String?, value as String?)
     }
     
     fileprivate func parseRetryTime(_ eventString: String) -> Int? {
@@ -351,7 +363,7 @@ open class EventSource: NSObject {
             return
         }
         
-        if error == nil || (error as! NSError).code != -999 {
+        if (error as NSError?)?.code != -999 {
             let nanoseconds = Double(self.retryTime) / 1000.0 * Double(NSEC_PER_SEC)
             let delayTime = DispatchTime.now() + Double(Int64(nanoseconds)) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: delayTime) {
