@@ -108,10 +108,12 @@ open class EventSource: NSObject {
             weakSelf?.eventSource(didReceive: newData)
         }
         
-        request.responseString { (response: DataResponse<String>) in
-            weakSelf?.currentRequest = nil
-            
-            weakSelf?.eventSourceRequestFinished(error: response.result.error, httpResponse: response.response)
+        request
+            .validate()
+            .responseString { (response: DataResponse<String>) in
+                weakSelf?.currentRequest = nil
+                
+                weakSelf?.eventSourceRequestFinished(error: response.result.error, httpResponse: response.response)
         }
     }
     
@@ -385,3 +387,4 @@ open class EventSource: NSObject {
     }
     
 }
+
